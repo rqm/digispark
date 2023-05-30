@@ -4,13 +4,9 @@ void setup()
 {
     // hello world
     String script = "echo 'hello world'";
+    String scriptLines = "1";
     // reset
     DigiKeyboard.sendKeyStroke(0);
-    // screen obfuscation ON
-    for (int i = 0; i < 16; i++)
-    {
-        DigiKeyboard.sendKeyStroke(KEY_F1);
-    }
     // open terminal via spotlight
     DigiKeyboard.sendKeyStroke(KEY_SPACE, MOD_GUI_LEFT);
     DigiKeyboard.delay(500);
@@ -23,14 +19,13 @@ void setup()
     DigiKeyboard.delay(100);
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(100);
+    // erase history
+    DigiKeyboard.print("sed -i '' \"$(($(wc -l <$HISTFILE)-" + scriptLines + ")),$ d\" $HISTFILE");
+    DigiKeyboard.delay(100);
+    DigiKeyboard.sendKeyStroke(KEY_ENTER);
+    DigiKeyboard.delay(100);
     // quit terminal
     DigiKeyboard.sendKeyStroke(KEY_Q, MOD_GUI_LEFT);
-    DigiKeyboard.delay(500);
-    // screen obfuscation OFF
-    for (int i = 0; i < 16; i++)
-    {
-        DigiKeyboard.sendKeyStroke(KEY_F2);
-    }
     // done
     pinMode(1, OUTPUT);
     digitalWrite(1, HIGH);
