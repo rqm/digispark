@@ -2,9 +2,6 @@
 
 void setup()
 {
-    // hello world
-    String script = "echo 'hello world'";
-    String scriptLines = "1";
     // reset
     DigiKeyboard.sendKeyStroke(0);
     // open terminal via spotlight
@@ -15,12 +12,12 @@ void setup()
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(2000);
     // run script
-    DigiKeyboard.print(script);
+    DigiKeyboard.print("echo 'hello world'");
     DigiKeyboard.delay(100);
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(100);
     // erase history
-    DigiKeyboard.print("sed -i '' \"$(($(wc -l <$HISTFILE)-" + scriptLines + ")),$ d\" $HISTFILE");
+    DigiKeyboard.print("sed -i '' \"$(($(wc -l <$HISTFILE)-1)),$ d\" $HISTFILE");
     DigiKeyboard.delay(100);
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(100);

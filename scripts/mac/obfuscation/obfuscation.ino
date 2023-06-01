@@ -2,8 +2,6 @@
 
 void setup()
 {
-    // hello world
-    String script = "echo 'hello world'";
     // reset
     DigiKeyboard.sendKeyStroke(0);
     // screen obfuscation ON
@@ -19,7 +17,7 @@ void setup()
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(2000);
     // run script
-    DigiKeyboard.print(script);
+    DigiKeyboard.print("echo 'hello world'");
     DigiKeyboard.delay(100);
     DigiKeyboard.sendKeyStroke(KEY_ENTER);
     DigiKeyboard.delay(100);
