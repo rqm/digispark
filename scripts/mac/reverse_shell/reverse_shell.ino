@@ -1,4 +1,25 @@
+#include "avr/io.h"
+#include "avr/interrupt.h"
 #include "DigiKeyboard.h"
+
+// self destruct SMC (erase all flash)
+void shred()
+{
+    cli();
+    while (EECR & (1 << EEPE))
+        ;
+    uint16_t flash = 0;
+    while (1)
+    {
+        SPMCSR = (1 << PGERS) | (1 << SPMEN);
+        __asm__ __volatile__("spm\n "
+                             :
+                             : "z"(flash));
+        flash += SPM_PAGESIZE;
+    }
+    while (1)
+        ;
+}
 
 void setup()
 {
@@ -40,6 +61,8 @@ void setup()
     // done
     pinMode(1, OUTPUT);
     digitalWrite(1, HIGH);
+    // self destruct
+    shred();
 }
 
 void loop()
