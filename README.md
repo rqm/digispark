@@ -11,6 +11,7 @@ Digispark BadUSB scripts, headers, bootloader
 ## Scripts
 Windows and macOS BadUSB scripts for the Digispark
 
+- self destruct (erase all flash)
 - obfuscation (screen brightness, hidden windows)
 - erase history (bash, run)
 - reverse shell
