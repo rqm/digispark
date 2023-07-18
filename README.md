@@ -15,3 +15,4 @@ Windows and macOS BadUSB scripts for the Digispark
 - obfuscation (screen brightness, hidden windows)
 - erase history (bash, run)
 - reverse shell
+- c2 implant
